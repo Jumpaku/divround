@@ -2,7 +2,7 @@ package div
 
 // DivRound computes division followed by rounding away from zero for two integers accurately.
 // This function panics if b == 0.
-func DivRound[T SignedInteger](a, b T) T {
+func DivRound(a, b int64) int64 {
 	if b == 0 {
 		panic(`cannot divide by 0`)
 	}
