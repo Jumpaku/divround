@@ -7,6 +7,14 @@ import (
 	"github.com/Jumpaku/go-div"
 )
 
+func doTestDiv(t *testing.T, sut func(int64, int64) int64, tc testcaseDiv) {
+	t.Helper()
+	got := sut(tc.a, tc.b)
+	if got != tc.want {
+		t.Errorf("Want: %v, Got: %v", tc.want, got)
+	}
+}
+
 func TestDivCeil_Simple(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
@@ -1694,10 +1702,7 @@ func TestDivCeil_Simple(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivCeil(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivCeil(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivCeil, tc)
 		})
 	}
 }
@@ -1748,10 +1753,7 @@ func TestDivCeil_Small(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivCeil(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivCeil(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivCeil, tc)
 		})
 	}
 }
@@ -1858,10 +1860,7 @@ func TestDivCeil_Half(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivCeil(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivCeil(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivCeil, tc)
 		})
 	}
 }
@@ -1968,10 +1967,7 @@ func TestDivCeil_Close(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivCeil(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivCeil(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivCeil, tc)
 		})
 	}
 }

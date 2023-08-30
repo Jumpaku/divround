@@ -1694,10 +1694,7 @@ func TestDivRoundHalfAwayFromZero_Simple(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRound(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundHalfAwayFromZero(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivRound, tc)
 		})
 	}
 }
@@ -1748,10 +1745,7 @@ func TestDivRoundHalfAwayFromZero_Small(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRound(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundHalfAwayFromZero(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivRound, tc)
 		})
 	}
 }
@@ -1859,10 +1853,7 @@ func TestDivRoundHalfAwayFromZero_Half(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRound(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundHalfAwayFromZero(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivRound, tc)
 		})
 	}
 }
@@ -1970,10 +1961,7 @@ func TestDivRoundHalfAwayFromZero_Close(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRound(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundHalfAwayFromZero(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivRound, tc)
 		})
 	}
 }

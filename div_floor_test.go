@@ -1694,10 +1694,7 @@ func TestDivFloor_Simple(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivFloor(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivCeil(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivFloor, tc)
 		})
 	}
 }
@@ -1748,10 +1745,7 @@ func TestDivFloor_Small(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivFloor(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivCeil(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivFloor, tc)
 		})
 	}
 }
@@ -1858,10 +1852,7 @@ func TestDivFloor_Half(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivFloor(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivCeil(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivFloor, tc)
 		})
 	}
 }
@@ -1968,10 +1959,7 @@ func TestDivFloor_Close(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivFloor(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivCeil(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivFloor, tc)
 		})
 	}
 }

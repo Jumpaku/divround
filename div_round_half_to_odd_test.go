@@ -1694,10 +1694,7 @@ func TestDivRoundHalfToOdd_Simple(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRoundHalfToOdd(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundHalfToOdd(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivRoundHalfToOdd, tc)
 		})
 	}
 }
@@ -1747,10 +1744,7 @@ func TestDivRoundHalfToOdd_Small(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRoundHalfToOdd(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundHalfToOdd(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivRoundHalfToOdd, tc)
 		})
 	}
 }
@@ -1858,10 +1852,7 @@ func TestDivRoundHalfToOdd_Half(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRoundHalfToOdd(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundHalfToOdd(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivRoundHalfToOdd, tc)
 		})
 	}
 }
@@ -1969,10 +1960,7 @@ func TestDivRoundHalfToOdd_Close(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRoundHalfToOdd(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundHalfToOdd(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			doTestDiv(t, div.DivRoundHalfToOdd, tc)
 		})
 	}
 }
