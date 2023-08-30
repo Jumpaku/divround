@@ -6,14 +6,10 @@ func DivRound(a, b int64) int64 {
 	if b == 0 {
 		panic(`cannot divide by 0`)
 	}
-	switch {
-	case a < 0 && b < 0:
-		return DivRoundHalfUp(-a, -b)
-	case a < 0:
-		return -DivRoundHalfUp(-a, b)
-	case b < 0:
-		return -DivRoundHalfUp(a, -b)
-	default:
-		return DivRoundHalfUp(a, b)
+	if (a < 0) != (b < 0) {
+		// For negative result
+		return DivRoundHalfDown(a, b)
 	}
+	// For positive result
+	return DivRoundHalfUp(a, b)
 }

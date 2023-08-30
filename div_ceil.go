@@ -17,7 +17,7 @@ func DivCeil(a, b int64) int64 {
 
 	switch {
 	case a < 0 && b < 0:
-		if a > b {
+		if b < a {
 			return 1
 		}
 		return DivCeil(-(a-b), -b) + 1
@@ -30,10 +30,10 @@ func DivCeil(a, b int64) int64 {
 		if a+b < 0 {
 			return 0
 		}
-		return -DivFloor(a, -b)
+		return -DivFloor(-(a+b), b) - 1
 	default:
-		q := a / b
-		if a%b > 0 {
+		q, r := a/b, a%b
+		if r > 0 {
 			return q + 1
 		}
 		return q
