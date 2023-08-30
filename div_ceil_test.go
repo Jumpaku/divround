@@ -7,14 +7,6 @@ import (
 	"github.com/Jumpaku/go-div"
 )
 
-func doTestDiv(t *testing.T, sut func(int64, int64) int64, tc testcaseDiv) {
-	t.Helper()
-	got := sut(tc.a, tc.b)
-	if got != tc.want {
-		t.Errorf("Want: %v, Got: %v", tc.want, got)
-	}
-}
-
 func TestDivCeil_Simple(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
@@ -1968,6 +1960,57 @@ func TestDivCeil_Close(t *testing.T) {
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
 			doTestDiv(t, div.DivCeil, tc)
+		})
+	}
+}
+
+func TestDivCeil_Error(t *testing.T) {
+	testCases := []testcaseDivErr{
+		{
+			-1, 9223372036854775807,
+			0, nil,
+		}, // -0.000000
+		{
+			-1, -9223372036854775808,
+			1, nil,
+		}, // 0.000000
+		{
+			1, 9223372036854775807,
+			1, nil,
+		}, // 0.000000
+		{
+			1, -9223372036854775808,
+			0, nil,
+		}, // -0.000000
+		{
+			9223372036854775807, -1,
+			-9223372036854775807, nil,
+		}, // -9223372036854775808.000000
+		{
+			9223372036854775807, 1,
+			9223372036854775807, nil,
+		}, // 9223372036854775808.000000
+		{
+			9223372036854775807, -9223372036854775808,
+			0, nil,
+		}, // -1.000000
+		{
+			-9223372036854775808, -1,
+			0, div.ErrOverflow,
+		}, // error
+		{
+			-9223372036854775808, 1,
+			-9223372036854775808, nil,
+		}, // -9223372036854775808.000000
+		{
+			-9223372036854775808, 9223372036854775807,
+			-1, nil,
+		}, // -1.000000
+	}
+
+	for _, tc := range testCases {
+		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
+			doTestDivErr(t, div.DivCeil, tc)
 		})
 	}
 }

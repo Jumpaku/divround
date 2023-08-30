@@ -29,7 +29,7 @@ func (cmp CompareResult) String() string {
 
 // Compare accurately compares a/b and c/d.
 // This function panic when b or d is 0.
-func Compare[T SignedInteger](a, b, c, d T) CompareResult {
+func Compare(a, b, c, d int64) CompareResult {
 	if b == 0 || d == 0 {
 		panic(`cannot divide by 0`)
 	}
@@ -44,7 +44,7 @@ func Compare[T SignedInteger](a, b, c, d T) CompareResult {
 		d = -d
 	}
 
-	cmp := int64(a)*int64(d) - int64(c)*int64(b)
+	cmp := a*d - b*c
 
 	switch {
 	case cmp < 0:
