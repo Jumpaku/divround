@@ -18,16 +18,16 @@ func main() {
 			continue
 		}
 		var found bool
-		if div.DivFloor(a, b) != int64(math.Floor(float64(a)/float64(b))) {
+		if q, _ := div.DivFloor(a, b); q != int64(math.Floor(float64(a)/float64(b))) {
 			found = true
 		}
-		if div.DivCeil(a, b) != int64(math.Ceil(float64(a)/float64(b))) {
+		if q, _ := div.DivCeil(a, b); q != int64(math.Ceil(float64(a)/float64(b))) {
 			found = true
 		}
-		if div.DivRound(a, b) != int64(math.Round(float64(a)/float64(b))) {
+		if q, _ := div.DivRound(a, b); q != int64(math.Round(float64(a)/float64(b))) {
 			found = true
 		}
-		if div.DivRoundHalfToEven(a, b) != int64(math.RoundToEven(float64(a)/float64(b))) {
+		if q, _ := div.DivRoundHalfToEven(a, b); q != int64(math.RoundToEven(float64(a)/float64(b))) {
 			found = true
 		}
 		if found {

@@ -3,47 +3,46 @@ package div
 import "math"
 
 // DivRoundHalfUp computes division followed by rounding for two integers accurately.
-// This function panics if b == 0.
-func DivRoundHalfUp(a, b int64) int64 {
+func DivRoundHalfUp(a, b int64) (int64, error) {
 	if b == 0 {
-		panic(`cannot divide by 0`)
+		return 0, NewZeroDivisionError("DivRoundHalfUp", a, b)
 	}
 	if a == math.MinInt64 && b == -1 {
-		panic("overflow")
+		return 0, NewOverflowError("DivRoundHalfUp", a, b)
 	}
 	if a == 0 {
-		return 0
+		return 0, nil
 	}
 	switch {
 	case a < 0 && b < 0:
 		if a > b {
 			if -a >= -(b - a) {
-				return 1
+				return 1, nil
 			}
-			return 0
+			return 0, nil
 		}
-		return DivRoundHalfUp(-(a-b), -b) + 1
+		return ignoreErr(DivRoundHalfUp(-(a-b), -b)) + 1, nil
 	case a < 0:
 		if a+b > 0 {
 			if -a <= a+b {
-				return 0
+				return 0, nil
 			}
-			return -1
+			return -1, nil
 		}
-		return -DivRoundHalfDown(-(a+b), b) - 1
+		return -ignoreErr(DivRoundHalfDown(-(a+b), b)) - 1, nil
 	case b < 0:
 		if a+b < 0 {
 			if a <= -(a + b) {
-				return 0
+				return 0, nil
 			}
-			return -1
+			return -1, nil
 		}
-		return -DivRoundHalfDown(-(a+b), b) - 1
+		return -ignoreErr(DivRoundHalfDown(-(a+b), b)) - 1, nil
 	default:
 		q, r := a/b, a%b
 		if r >= b-r {
-			return q + 1
+			return q + 1, nil
 		}
-		return q
+		return q, nil
 	}
 }

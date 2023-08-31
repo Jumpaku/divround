@@ -1,10 +1,17 @@
 package div
 
+import "math"
+
 // DivRound computes division followed by rounding away from zero for two integers accurately.
-// This function panics if b == 0.
-func DivRound(a, b int64) int64 {
+func DivRound(a, b int64) (int64, error) {
 	if b == 0 {
-		panic(`cannot divide by 0`)
+		return 0, NewZeroDivisionError("DivRound", a, b)
+	}
+	if a == math.MinInt64 && b == -1 {
+		return 0, NewOverflowError("DivRound", a, b)
+	}
+	if a == 0 {
+		return 0, nil
 	}
 	if (a < 0) != (b < 0) {
 		// For negative result

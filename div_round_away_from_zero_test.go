@@ -1694,10 +1694,9 @@ func TestDivRoundAwayFromZero_Simple(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
-			got := div.DivRoundAwayFromZero(tc.a, tc.b)
-			if got != tc.want {
-				t.Errorf("DivRoundAwayFromZero(%d, %d) failed. Want: %v, Got: %v", tc.a, tc.b, tc.want, got)
-			}
+			t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
+				doTestDiv(t, div.DivRoundAwayFromZero, tc)
+			})
 		})
 	}
 }
