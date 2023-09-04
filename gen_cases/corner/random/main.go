@@ -27,7 +27,7 @@ func main() {
 		if q, _ := div.DivRound(a, b); q != int64(math.Round(float64(a)/float64(b))) {
 			found = true
 		}
-		if q, _ := div.DivRoundHalfToEven(a, b); q != int64(math.RoundToEven(float64(a)/float64(b))) {
+		if q, _ := div.DivRoundHalfEven(a, b); q != int64(math.RoundToEven(float64(a)/float64(b))) {
 			found = true
 		}
 		if found {

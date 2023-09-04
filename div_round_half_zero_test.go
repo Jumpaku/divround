@@ -7,7 +7,7 @@ import (
 	"github.com/Jumpaku/go-div"
 )
 
-func TestDivRoundHalfToEven_Simple(t *testing.T) {
+func TestDivRoundHalfZero_Simple(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
 			-10, -10,
@@ -107,7 +107,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // 1.285714
 		{
 			-9, -6,
-			2,
+			1,
 		}, // 1.500000
 		{
 			-9, -5,
@@ -151,7 +151,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // -1.800000
 		{
 			-9, 6,
-			-2,
+			-1,
 		}, // -1.500000
 		{
 			-9, 7,
@@ -283,7 +283,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // 2.333333
 		{
 			-7, -2,
-			4,
+			3,
 		}, // 3.500000
 		{
 			-7, -1,
@@ -295,7 +295,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // -7.000000
 		{
 			-7, 2,
-			-4,
+			-3,
 		}, // -3.500000
 		{
 			-7, 3,
@@ -355,7 +355,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // 1.200000
 		{
 			-6, -4,
-			2,
+			1,
 		}, // 1.500000
 		{
 			-6, -3,
@@ -383,7 +383,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // -2.000000
 		{
 			-6, 4,
-			-2,
+			-1,
 		}, // -1.500000
 		{
 			-6, 5,
@@ -603,7 +603,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // 1.000000
 		{
 			-3, -2,
-			2,
+			1,
 		}, // 1.500000
 		{
 			-3, -1,
@@ -615,7 +615,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // -3.000000
 		{
 			-3, 2,
-			-2,
+			-1,
 		}, // -1.500000
 		{
 			-3, 3,
@@ -1083,7 +1083,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // -1.000000
 		{
 			3, -2,
-			-2,
+			-1,
 		}, // -1.500000
 		{
 			3, -1,
@@ -1095,7 +1095,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // 3.000000
 		{
 			3, 2,
-			2,
+			1,
 		}, // 1.500000
 		{
 			3, 3,
@@ -1315,7 +1315,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // -1.200000
 		{
 			6, -4,
-			-2,
+			-1,
 		}, // -1.500000
 		{
 			6, -3,
@@ -1343,7 +1343,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // 2.000000
 		{
 			6, 4,
-			2,
+			1,
 		}, // 1.500000
 		{
 			6, 5,
@@ -1403,7 +1403,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // -2.333333
 		{
 			7, -2,
-			-4,
+			-3,
 		}, // -3.500000
 		{
 			7, -1,
@@ -1415,7 +1415,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // 7.000000
 		{
 			7, 2,
-			4,
+			3,
 		}, // 3.500000
 		{
 			7, 3,
@@ -1547,7 +1547,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // -1.285714
 		{
 			9, -6,
-			-2,
+			-1,
 		}, // -1.500000
 		{
 			9, -5,
@@ -1591,7 +1591,7 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 		}, // 1.800000
 		{
 			9, 6,
-			2,
+			1,
 		}, // 1.500000
 		{
 			9, 7,
@@ -1694,12 +1694,12 @@ func TestDivRoundHalfToEven_Simple(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfToEven, tc)
+			doTestDiv(t, div.DivRoundHalfZero, tc)
 		})
 	}
 }
 
-func TestDivRoundHalfToEven_Small(t *testing.T) {
+func TestDivRoundHalfZero_Small(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
 			-2, -1234567890123456789,
@@ -1745,12 +1745,12 @@ func TestDivRoundHalfToEven_Small(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfToEven, tc)
+			doTestDiv(t, div.DivRoundHalfZero, tc)
 		})
 	}
 }
 
-func TestDivRoundHalfToEven_Half(t *testing.T) {
+func TestDivRoundHalfZero_Half(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
 			-25000000000000001, -10000000000000000,
@@ -1810,11 +1810,11 @@ func TestDivRoundHalfToEven_Half(t *testing.T) {
 		}, // -3.500000
 		{
 			-35000000000000000, -10000000000000000,
-			4,
+			3,
 		}, // 3.500000
 		{
 			-35000000000000000, 10000000000000000,
-			-4,
+			-3,
 		}, // -3.500000
 		{
 			-34999999999999999, -10000000000000000,
@@ -1834,11 +1834,11 @@ func TestDivRoundHalfToEven_Half(t *testing.T) {
 		}, // 3.500000
 		{
 			35000000000000000, -10000000000000000,
-			-4,
+			-3,
 		}, // -3.500000
 		{
 			35000000000000000, 10000000000000000,
-			4,
+			3,
 		}, // 3.500000
 		{
 			34999999999999999, -10000000000000000,
@@ -1853,12 +1853,12 @@ func TestDivRoundHalfToEven_Half(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfToEven, tc)
+			doTestDiv(t, div.DivRoundHalfZero, tc)
 		})
 	}
 }
 
-func TestDivRoundHalfToEven_Close(t *testing.T) {
+func TestDivRoundHalfZero_Close(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
 			-20000000000000001, -20000000000000000,
@@ -1961,17 +1961,17 @@ func TestDivRoundHalfToEven_Close(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfToEven, tc)
+			doTestDiv(t, div.DivRoundHalfZero, tc)
 		})
 	}
 }
 
-func TestDivRoundHalfToEven_Error(t *testing.T) {
+func TestDivRoundHalfZero_Error(t *testing.T) {
 	testCases := []testcaseDivErr{
 		{
 			-1, 9223372036854775807,
 			0, nil,
-		}, // -0.000000
+		}, // 0.000000
 		{
 			-1, -9223372036854775808,
 			0, nil,
@@ -1983,11 +1983,11 @@ func TestDivRoundHalfToEven_Error(t *testing.T) {
 		{
 			1, -9223372036854775808,
 			0, nil,
-		}, // -0.000000
+		}, // 0.000000
 		{
 			9223372036854775807, -1,
 			-9223372036854775807, nil,
-		}, // -9223372036854775808.000000
+		}, // 9223372036854775808.000000
 		{
 			9223372036854775807, 1,
 			9223372036854775807, nil,
@@ -1995,7 +1995,7 @@ func TestDivRoundHalfToEven_Error(t *testing.T) {
 		{
 			9223372036854775807, -9223372036854775808,
 			-1, nil,
-		}, // -1.000000
+		}, // 1.000000
 		{
 			-9223372036854775808, -1,
 			0, div.ErrOverflow,
@@ -2003,16 +2003,16 @@ func TestDivRoundHalfToEven_Error(t *testing.T) {
 		{
 			-9223372036854775808, 1,
 			-9223372036854775808, nil,
-		}, // -9223372036854775808.000000
+		}, // 9223372036854775808.000000
 		{
 			-9223372036854775808, 9223372036854775807,
 			-1, nil,
-		}, // -1.000000
+		}, // 1.000000
 	}
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDivErr(t, div.DivRoundHalfToEven, tc)
+			doTestDivErr(t, div.DivRoundHalfZero, tc)
 		})
 	}
 }

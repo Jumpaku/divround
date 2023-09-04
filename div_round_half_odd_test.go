@@ -7,7 +7,7 @@ import (
 	"github.com/Jumpaku/go-div"
 )
 
-func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
+func TestDivRoundHalfOdd_Simple(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
 			-10, -10,
@@ -35,7 +35,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 2.000000
 		{
 			-10, -4,
-			2,
+			3,
 		}, // 2.500000
 		{
 			-10, -3,
@@ -63,7 +63,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -3.333333
 		{
 			-10, 4,
-			-2,
+			-3,
 		}, // -2.500000
 		{
 			-10, 5,
@@ -123,7 +123,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 3.000000
 		{
 			-9, -2,
-			4,
+			5,
 		}, // 4.500000
 		{
 			-9, -1,
@@ -135,7 +135,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -9.000000
 		{
 			-9, 2,
-			-4,
+			-5,
 		}, // -4.500000
 		{
 			-9, 3,
@@ -411,7 +411,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.600000
 		{
 			-5, -10,
-			0,
+			1,
 		}, // 0.500000
 		{
 			-5, -9,
@@ -443,7 +443,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 1.666667
 		{
 			-5, -2,
-			2,
+			3,
 		}, // 2.500000
 		{
 			-5, -1,
@@ -455,7 +455,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -5.000000
 		{
 			-5, 2,
-			-2,
+			-3,
 		}, // -2.500000
 		{
 			-5, 3,
@@ -487,7 +487,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.555556
 		{
 			-5, 10,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			-4, -10,
@@ -499,7 +499,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.444444
 		{
 			-4, -8,
-			0,
+			1,
 		}, // 0.500000
 		{
 			-4, -7,
@@ -559,7 +559,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.571429
 		{
 			-4, 8,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			-4, 9,
@@ -587,7 +587,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.428571
 		{
 			-3, -6,
-			0,
+			1,
 		}, // 0.500000
 		{
 			-3, -5,
@@ -631,7 +631,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.600000
 		{
 			-3, 6,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			-3, 7,
@@ -675,7 +675,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.400000
 		{
 			-2, -4,
-			0,
+			1,
 		}, // 0.500000
 		{
 			-2, -3,
@@ -703,7 +703,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.666667
 		{
 			-2, 4,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			-2, 5,
@@ -763,7 +763,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.333333
 		{
 			-1, -2,
-			0,
+			1,
 		}, // 0.500000
 		{
 			-1, -1,
@@ -775,7 +775,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -1.000000
 		{
 			-1, 2,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			-1, 3,
@@ -923,7 +923,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.333333
 		{
 			1, -2,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			1, -1,
@@ -935,7 +935,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 1.000000
 		{
 			1, 2,
-			0,
+			1,
 		}, // 0.500000
 		{
 			1, 3,
@@ -995,7 +995,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.400000
 		{
 			2, -4,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			2, -3,
@@ -1023,7 +1023,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.666667
 		{
 			2, 4,
-			0,
+			1,
 		}, // 0.500000
 		{
 			2, 5,
@@ -1067,7 +1067,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.428571
 		{
 			3, -6,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			3, -5,
@@ -1111,7 +1111,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.600000
 		{
 			3, 6,
-			0,
+			1,
 		}, // 0.500000
 		{
 			3, 7,
@@ -1139,7 +1139,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -0.444444
 		{
 			4, -8,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			4, -7,
@@ -1199,7 +1199,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.571429
 		{
 			4, 8,
-			0,
+			1,
 		}, // 0.500000
 		{
 			4, 9,
@@ -1211,7 +1211,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.400000
 		{
 			5, -10,
-			0,
+			-1,
 		}, // -0.500000
 		{
 			5, -9,
@@ -1243,7 +1243,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -1.666667
 		{
 			5, -2,
-			-2,
+			-3,
 		}, // -2.500000
 		{
 			5, -1,
@@ -1255,7 +1255,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 5.000000
 		{
 			5, 2,
-			2,
+			3,
 		}, // 2.500000
 		{
 			5, 3,
@@ -1287,7 +1287,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 0.555556
 		{
 			5, 10,
-			0,
+			1,
 		}, // 0.500000
 		{
 			6, -10,
@@ -1563,7 +1563,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -3.000000
 		{
 			9, -2,
-			-4,
+			-5,
 		}, // -4.500000
 		{
 			9, -1,
@@ -1575,7 +1575,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 9.000000
 		{
 			9, 2,
-			4,
+			5,
 		}, // 4.500000
 		{
 			9, 3,
@@ -1635,7 +1635,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // -2.000000
 		{
 			10, -4,
-			-2,
+			-3,
 		}, // -2.500000
 		{
 			10, -3,
@@ -1663,7 +1663,7 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 		}, // 3.333333
 		{
 			10, 4,
-			2,
+			3,
 		}, // 2.500000
 		{
 			10, 5,
@@ -1694,12 +1694,12 @@ func TestDivRoundHalfTowardZero_Simple(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfTowardZero, tc)
+			doTestDiv(t, div.DivRoundHalfOdd, tc)
 		})
 	}
 }
 
-func TestDivRoundHalfTowardZero_Small(t *testing.T) {
+func TestDivRoundHalfOdd_Small(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
 			-2, -1234567890123456789,
@@ -1741,16 +1741,15 @@ func TestDivRoundHalfTowardZero_Small(t *testing.T) {
 			2, 1234567890123456789,
 			0,
 		}, // 0.000000
-
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfTowardZero, tc)
+			doTestDiv(t, div.DivRoundHalfOdd, tc)
 		})
 	}
 }
 
-func TestDivRoundHalfTowardZero_Half(t *testing.T) {
+func TestDivRoundHalfOdd_Half(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
 			-25000000000000001, -10000000000000000,
@@ -1762,11 +1761,11 @@ func TestDivRoundHalfTowardZero_Half(t *testing.T) {
 		}, // -2.500000
 		{
 			-25000000000000000, -10000000000000000,
-			2,
+			3,
 		}, // 2.500000
 		{
 			-25000000000000000, 10000000000000000,
-			-2,
+			-3,
 		}, // -2.500000
 		{
 			-24999999999999999, -10000000000000000,
@@ -1786,11 +1785,11 @@ func TestDivRoundHalfTowardZero_Half(t *testing.T) {
 		}, // 2.500000
 		{
 			25000000000000000, -10000000000000000,
-			-2,
+			-3,
 		}, // -2.500000
 		{
 			25000000000000000, 10000000000000000,
-			2,
+			3,
 		}, // 2.500000
 		{
 			24999999999999999, -10000000000000000,
@@ -1853,12 +1852,12 @@ func TestDivRoundHalfTowardZero_Half(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfTowardZero, tc)
+			doTestDiv(t, div.DivRoundHalfOdd, tc)
 		})
 	}
 }
 
-func TestDivRoundHalfTowardZero_Close(t *testing.T) {
+func TestDivRoundHalfOdd_Close(t *testing.T) {
 	testCases := []testcaseDiv{
 		{
 			-20000000000000001, -20000000000000000,
@@ -1961,17 +1960,17 @@ func TestDivRoundHalfTowardZero_Close(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfTowardZero, tc)
+			doTestDiv(t, div.DivRoundHalfOdd, tc)
 		})
 	}
 }
 
-func TestDivRoundHalfTowardZero_Error(t *testing.T) {
+func TestDivRoundHalfOdd_Error(t *testing.T) {
 	testCases := []testcaseDivErr{
 		{
 			-1, 9223372036854775807,
 			0, nil,
-		}, // 0.000000
+		}, // -0.000000
 		{
 			-1, -9223372036854775808,
 			0, nil,
@@ -1983,11 +1982,11 @@ func TestDivRoundHalfTowardZero_Error(t *testing.T) {
 		{
 			1, -9223372036854775808,
 			0, nil,
-		}, // 0.000000
+		}, // -0.000000
 		{
 			9223372036854775807, -1,
 			-9223372036854775807, nil,
-		}, // 9223372036854775808.000000
+		}, // -9223372036854775808.000000
 		{
 			9223372036854775807, 1,
 			9223372036854775807, nil,
@@ -1995,7 +1994,7 @@ func TestDivRoundHalfTowardZero_Error(t *testing.T) {
 		{
 			9223372036854775807, -9223372036854775808,
 			-1, nil,
-		}, // 1.000000
+		}, // -1.000000
 		{
 			-9223372036854775808, -1,
 			0, div.ErrOverflow,
@@ -2003,16 +2002,17 @@ func TestDivRoundHalfTowardZero_Error(t *testing.T) {
 		{
 			-9223372036854775808, 1,
 			-9223372036854775808, nil,
-		}, // 9223372036854775808.000000
+		}, // -9223372036854775808.000000
 		{
 			-9223372036854775808, 9223372036854775807,
 			-1, nil,
-		}, // 1.000000
+		}, // -1.000000
+
 	}
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDivErr(t, div.DivRoundHalfTowardZero, tc)
+			doTestDivErr(t, div.DivRoundHalfOdd, tc)
 		})
 	}
 }
