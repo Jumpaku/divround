@@ -1,7 +1,7 @@
 # Divround: Exact Division-and-Rounding Operation in Go
 
 **Divround** is a Go library designed to facilitate exact division-and-rounding operations for integers.
-Division-and-rounding is an operation defined as `Round(numerator / denominator)`, where `numerator` and `denominator` are integers and `Round` is a function that rounds rational number to an integer.
+Division-and-rounding is an operation defined as `Round(numerator / denominator)`, where `numerator` and `denominator` are integers and `Round` is a function that rounds the quotient into an integer.
 This operation demands careful handling to ensure precision although it seems simple.
 
 ## Features
@@ -9,7 +9,7 @@ This operation demands careful handling to ensure precision although it seems si
 - **Exact Division-and-Rounding Operations for Integers** 
 - **Overflow Check**
 - **Zero Division Check**
-- **Multiple Kind of Rounding Operations**
+- **Multiple Kind of Rounding Methods**
 
 ## Usage
 
@@ -55,7 +55,6 @@ Although there are some approaches to compute the division-and-rounding operatio
 * *rational number type*: It is one of the recommended methods because rational number type can exactly represent rational numbers. Note that internal GCD operations may impact on performance.
 * *primitive integer type*: It is one of the recommended methods because integer type can compute the division-and-rounding operation exactly and is natively supported by almost languages. Note that integer arithmetic operation for large numbers may cause overflow.
 
-Focusing on Go, the ratinal number type is supported by standard library.
-
-
+Focusing to Go, to perform the division-and-rounding operation using integer type demands careful and complex implementation although rational number type is supported by the standard library..
+Therefore *divround* provides the functions to perform the operation for integer with error handling and multiple kind of rounding methods.
 
