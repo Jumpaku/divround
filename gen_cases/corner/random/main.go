@@ -5,7 +5,7 @@ import (
 	"math"
 	"math/rand"
 
-	"github.com/Jumpaku/go-div"
+	div "github.com/Jumpaku/divround"
 )
 
 func main() {

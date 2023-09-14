@@ -6,10 +6,10 @@ This operation demands careful handling to ensure precision although it seems si
 
 ## Features
 
-- **Exact Division-and-Rounding Operations for Integers** 
-- **Overflow Check**
-- **Zero Division Check**
-- **Multiple Kinds of Rounding Methods**
+- Exact Division-and-Rounding Operations for Integers
+- Overflow Check
+- Zero Division Check
+- Multiple Kinds of Rounding Methods
 
 ## Usage
 
@@ -22,26 +22,35 @@ go get github.com/Jumpaku/divround
 Importing **divround** allows to call functions to perform the division-and-rounding operation as shown in the example below:
 
 ```go
+package main
+
 import (
-    "fmt"
-    "log"
-    . "github.com/Jumpaku/divround"
+	"errors"
+	"fmt"
+	"log"
+
+	. "github.com/Jumpaku/divround"
 )
 
 func main() {
-    var (
-        attack        = 65
-        effectPercent = 25
-        defense       = 80
-    )
+	var (
+		attack        int64 = 74
+		effectPercent int64 = 25
+		defense       int64 = 80
+	)
 
-    // damage = attack * (1 + effectRate / 100) - defense
-    damage, err := DivRound(attack * (100 + effectRate) - 100 * defense, 100)
-    if err != nil {
-        log.Panicf(`fail to compute damage: %v`, err)
-    }
+	// damage = attack * (1 + effectRate / 100) - defense
+	damage, err := DivRound(attack*(100+effectPercent)-100*defense, 100)
+	if err != nil {
+		if errors.Is(err, ErrOverflow) {
+			log.Panicf(`overflow occurred: %v`, err)
+		}
+		if errors.Is(err, ErrZeroDivision) {
+			log.Panicf(`zero division occurred: %v`, err)
+		}
+	}
 
-    fmt.Printf(`Damage: %d`, damage)
+	fmt.Printf("Damage: %d\n", damage) // Damage: 13
 }
 ```
 

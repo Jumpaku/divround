@@ -1,4 +1,4 @@
-package div_test
+package divround_test
 
 import (
 	"errors"
@@ -6,11 +6,11 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/Jumpaku/go-div"
+	dr "github.com/Jumpaku/divround"
 )
 
 func TestErrOverflow_Error(t *testing.T) {
-	sut := div.NewOverflowError("error", 0, 0)
+	sut := dr.NewOverflowError("error", 0, 0)
 	got := sut.Error()
 	want := `overflow`
 	if !strings.Contains(strings.ToLower(got), want) {
@@ -19,26 +19,26 @@ func TestErrOverflow_Error(t *testing.T) {
 }
 
 func TestErrOverflow_Is(t *testing.T) {
-	sut := div.NewOverflowError("error", 0, 0)
+	sut := dr.NewOverflowError("error", 0, 0)
 	t.Run(`simple`, func(t *testing.T) {
-		if !errors.Is(sut, div.ErrOverflow) {
+		if !errors.Is(sut, dr.ErrOverflow) {
 			t.Errorf(`is not div.ErrOverflow`)
 		}
 	})
 	t.Run(`joined`, func(t *testing.T) {
-		if !errors.Is(errors.Join(sut, errors.New(`some error`)), div.ErrOverflow) {
+		if !errors.Is(errors.Join(sut, errors.New(`some error`)), dr.ErrOverflow) {
 			t.Errorf(`is not div.ErrOverflow`)
 		}
 	})
 	t.Run(`wrapped`, func(t *testing.T) {
-		if !errors.Is(fmt.Errorf(`some error : %w`, sut), div.ErrOverflow) {
+		if !errors.Is(fmt.Errorf(`some error : %w`, sut), dr.ErrOverflow) {
 			t.Errorf(`is not div.ErrOverflow`)
 		}
 	})
 }
 
 func TestErrZeroDivision_Error(t *testing.T) {
-	sut := div.NewZeroDivisionError("error", 0, 0)
+	sut := dr.NewZeroDivisionError("error", 0, 0)
 	got := sut.Error()
 	if !strings.Contains(strings.ToLower(got), `division`) {
 		t.Errorf(`"division" not contained`)
@@ -49,19 +49,19 @@ func TestErrZeroDivision_Error(t *testing.T) {
 }
 
 func TestErrZeroDivision_Is(t *testing.T) {
-	sut := div.NewZeroDivisionError("error", 0, 0)
+	sut := dr.NewZeroDivisionError("error", 0, 0)
 	t.Run(`simple`, func(t *testing.T) {
-		if !errors.Is(sut, div.ErrZeroDivision) {
+		if !errors.Is(sut, dr.ErrZeroDivision) {
 			t.Errorf(`is not div.ErrZeroDivision`)
 		}
 	})
 	t.Run(`joined`, func(t *testing.T) {
-		if !errors.Is(errors.Join(sut, errors.New(`some error`)), div.ErrZeroDivision) {
+		if !errors.Is(errors.Join(sut, errors.New(`some error`)), dr.ErrZeroDivision) {
 			t.Errorf(`is not div.ErrZeroDivision`)
 		}
 	})
 	t.Run(`wrapped`, func(t *testing.T) {
-		if !errors.Is(fmt.Errorf(`some error : %w`, sut), div.ErrZeroDivision) {
+		if !errors.Is(fmt.Errorf(`some error : %w`, sut), dr.ErrZeroDivision) {
 			t.Errorf(`is not div.ErrZeroDivision`)
 		}
 	})

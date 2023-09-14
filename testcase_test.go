@@ -1,4 +1,4 @@
-package div_test
+package divround_test
 
 import (
 	"errors"

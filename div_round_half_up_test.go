@@ -1,10 +1,10 @@
-package div_test
+package divround_test
 
 import (
 	"fmt"
 	"testing"
 
-	"github.com/Jumpaku/go-div"
+	dr "github.com/Jumpaku/divround"
 )
 
 func TestDivRoundHalfUp_Simple(t *testing.T) {
@@ -1694,7 +1694,7 @@ func TestDivRoundHalfUp_Simple(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%3d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfUp, tc)
+			doTestDiv(t, dr.DivRoundHalfUp, tc)
 		})
 	}
 }
@@ -1745,7 +1745,7 @@ func TestDivRoundHalfUp_Small(t *testing.T) {
 	}
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%3d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfUp, tc)
+			doTestDiv(t, dr.DivRoundHalfUp, tc)
 		})
 	}
 }
@@ -1853,7 +1853,7 @@ func TestDivRoundHalfUp_Half(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfUp, tc)
+			doTestDiv(t, dr.DivRoundHalfUp, tc)
 		})
 	}
 }
@@ -1961,7 +1961,7 @@ func TestDivRoundHalfUp_Close(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDiv(t, div.DivRoundHalfUp, tc)
+			doTestDiv(t, dr.DivRoundHalfUp, tc)
 		})
 	}
 }
@@ -1998,7 +1998,7 @@ func TestDivRoundHalfUp_Error(t *testing.T) {
 		}, // 1.000000
 		{
 			-9223372036854775808, -1,
-			0, div.ErrOverflow,
+			0, dr.ErrOverflow,
 		}, // error
 		{
 			-9223372036854775808, 1,
@@ -2012,7 +2012,7 @@ func TestDivRoundHalfUp_Error(t *testing.T) {
 
 	for _, tc := range testCases {
 		t.Run(fmt.Sprintf(`(%20d/%20d)`, tc.a, tc.b), func(t *testing.T) {
-			doTestDivErr(t, div.DivRoundHalfUp, tc)
+			doTestDivErr(t, dr.DivRoundHalfUp, tc)
 		})
 	}
 }

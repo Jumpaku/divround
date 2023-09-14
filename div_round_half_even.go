@@ -1,4 +1,4 @@
-package div
+package divround
 
 import "math"
 
