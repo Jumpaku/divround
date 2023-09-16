@@ -2,7 +2,7 @@ package divround
 
 import "math"
 
-// DivTrunc computes division followed by rounding toward zero for two integers accurately.
+// DivTrunc computes division followed by truncation (rounding toward zero) for two integers.
 func DivTrunc(a, b int64) (int64, error) {
 	if b == 0 {
 		return 0, NewZeroDivisionError("DivTrunc", a, b)

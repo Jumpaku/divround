@@ -2,8 +2,7 @@ package divround
 
 import "math"
 
-// DivCeil computes division followed by ceiling for two integers accurately.
-// This function panic if b == 0.
+// DivCeil computes division followed by ceiling (rounding toward positive infinity) for two integers.
 func DivCeil(a, b int64) (int64, error) {
 	if b == 0 {
 		return 0, NewZeroDivisionError("DivCeil", a, b)

@@ -2,7 +2,7 @@ package divround
 
 import "math"
 
-// DivFloor computes division followed by flooring for two integers accurately.
+// DivFloor computes division followed by flooring (rounding toward negative infinity) for two integers.
 func DivFloor(a, b int64) (int64, error) {
 	if b == 0 {
 		return 0, NewZeroDivisionError("DivFloor", a, b)

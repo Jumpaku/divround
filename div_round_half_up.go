@@ -2,7 +2,7 @@ package divround
 
 import "math"
 
-// DivRoundHalfUp computes division followed by rounding for two integers accurately.
+// DivRoundHalfUp computes division followed by rounding half toward positive infinity for two integers.
 func DivRoundHalfUp(a, b int64) (int64, error) {
 	if b == 0 {
 		return 0, NewZeroDivisionError("DivRoundHalfUp", a, b)

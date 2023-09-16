@@ -2,7 +2,7 @@ package divround
 
 import "math"
 
-// DivRoundHalfEven computes division followed by rounding for two integers accurately.
+// DivRoundHalfEven computes division followed by rounding half toward nearest even for two integers.
 func DivRoundHalfEven(a, b int64) (int64, error) {
 	if b == 0 {
 		return 0, NewZeroDivisionError("DivRoundHalfEven", a, b)

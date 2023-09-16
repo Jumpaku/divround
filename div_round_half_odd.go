@@ -2,7 +2,7 @@ package divround
 
 import "math"
 
-// DivRoundHalfOdd computes division followed by rounding for two integers accurately.
+// DivRoundHalfOdd computes division followed by rounding half toward nearest odd for two integers.
 func DivRoundHalfOdd(a, b int64) (int64, error) {
 	if b == 0 {
 		return 0, NewZeroDivisionError("DivRoundHalfOdd", a, b)

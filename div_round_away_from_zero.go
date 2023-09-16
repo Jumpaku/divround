@@ -2,7 +2,7 @@ package divround
 
 import "math"
 
-// DivRoundAwayFromZero computes division followed by rounding away from zero for two integers accurately.
+// DivRoundAwayFromZero computes division followed by rounding away from zero for two integers.
 func DivRoundAwayFromZero(a, b int64) (int64, error) {
 	if b == 0 {
 		return 0, NewZeroDivisionError("DivRoundAwayFromZero", a, b)

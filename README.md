@@ -65,5 +65,30 @@ Although there are some approaches to compute the division-and-rounding operatio
 * *primitive integer type*: It is one of the recommended methods because integer type can compute the division-and-rounding operation exactly and is natively supported by almost all languages. Note that integer arithmetic operations for large numbers may cause overflow.
 
 Focusing on Go, performing the division-and-rounding operation using integer type demands careful and complex implementation although rational number type is supported by the standard library..
-Therefore *divround* provides the functions to perform the operation for integers with error handling and multiple kinds of rounding methods.
+Therefore **divround** provides the functions to perform the operation for integers with error handling and multiple kinds of rounding methods.
 
+## Detail Description
+
+**Divround** provides the division-and-rounding operations as functions of type `func (int64, int64) (int64, error)`, which are named Div< _RoundingMethod_ >.
+
+### Behaviors of Supported Rounding Methods
+
+| a  /  b  | DivCeil | DivFloor | DivTrunc | DivRoundAwayFromZero | DivRound | DivRoundHalfZero | DivRoundHalfDown | DivRoundHalfUp | DivRoundHalfEven | DivRoundHalfOdd |
+|:---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+|  55 / 10  |   6 |   5 |   5 |   6 |   6 |   5 |   5 |   6 |   6 |   5 |
+|  41 / 10  |   5 |   4 |   4 |   5 |   4 |   4 |   4 |   4 |   4 |   4 |
+|  40 / 10  |   4 |   4 |   4 |   4 |   4 |   4 |   4 |   4 |   4 |   4 |
+|  39 / 10  |   4 |   3 |   3 |   4 |   4 |   4 |   4 |   4 |   4 |   4 |
+|  25 / 10  |   3 |   2 |   2 |   3 |   3 |   2 |   2 |   3 |   2 |   3 |
+| -25 / 10  |  -2 |  -3 |  -2 |  -3 |  -3 |  -2 |  -3 |  -2 |  -2 |  -3 |
+| -39 / 10  |  -3 |  -4 |  -3 |  -4 |  -4 |  -4 |  -4 |  -4 |  -4 |  -4 |
+| -40 / 10  |  -4 |  -4 |  -4 |  -4 |  -4 |  -4 |  -4 |  -4 |  -4 |  -4 |
+| -41 / 10  |  -4 |  -5 |  -4 |  -5 |  -4 |  -4 |  -4 |  -4 |  -4 |  -4 |
+| -55 / 10  |  -5 |  -6 |  -5 |  -6 |  -6 |  -5 |  -6 |  -5 |  -6 |  -5 |
+
+### Errors
+
+The functions provided by **divround** return the following errors:
+
+* ErrOverflow: when `math.MinInt64 (-9223372036854775808)` is divided by `-1`.
+* ErrDivisionByZero: when an integer is divided by `0`.
