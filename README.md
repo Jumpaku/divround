@@ -39,7 +39,7 @@ func main() {
 		defense       int64 = 80
 	)
 
-	// damage = attack * (1 + effectRate / 100) - defense
+	// damage = attack * (1 + effectPercent / 100) - defense
 	damage, err := DivRound(attack*(100+effectPercent)-100*defense, 100)
 	if err != nil {
 		if errors.Is(err, ErrOverflow) {
