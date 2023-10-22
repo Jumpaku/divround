@@ -1,4 +1,4 @@
-package main
+package divround_test
 
 import (
 	"errors"
@@ -8,7 +8,7 @@ import (
 	. "github.com/Jumpaku/divround"
 )
 
-func main() {
+func ExampleDivRound() {
 	var (
 		attack        int64 = 74
 		effectPercent int64 = 25
@@ -27,4 +27,5 @@ func main() {
 	}
 
 	fmt.Printf("Damage: %d\n", damage)
+	// Output: Damage: 13
 }
