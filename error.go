@@ -10,10 +10,10 @@ var (
 )
 
 func NewOverflowError(message string, numerator, denominator int64) error {
-	return overflowError{numerator: numerator, denominator: denominator}
+	return overflowError{message: message, numerator: numerator, denominator: denominator}
 }
 func NewZeroDivisionError(message string, numerator, denominator int64) error {
-	return zeroDivisionError{numerator: numerator, denominator: denominator}
+	return zeroDivisionError{message: message, numerator: numerator, denominator: denominator}
 }
 
 type overflowError struct {
@@ -25,15 +25,16 @@ type overflowError struct {
 func (err overflowError) Error() string {
 	return fmt.Sprintf(`%s: overflow occurred at %d / %d`, err.message, err.numerator, err.denominator)
 }
+
 func (err overflowError) Is(target error) bool {
 	_, ok := target.(overflowError)
 	return ok
 }
 
 type zeroDivisionError struct {
+	message     string
 	numerator   int64
 	denominator int64
-	message     string
 }
 
 func (err zeroDivisionError) Error() string {
